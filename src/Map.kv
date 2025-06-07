@@ -1,0 +1,202 @@
+#:import MDTextField kivymd.uix.textfield.MDTextField
+#:import FloatLayout kivy.uix.floatlayout.FloatLayout
+
+<MyLabel@MDLabel>:
+    font_size: '20sp'
+    halign: 'left'
+    valign: 'middle'
+    size_hint_y: '3dp'
+    text_size: self.size
+
+    #Список достопримечательностей 
+<AttractionItem@BoxLayout>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: self.minimum_height
+    padding: '10dp'
+    spacing: '10dp'
+
+    showing_info: None
+    
+    label: label
+    info: info
+    marker_button: marker_button
+    height: '110dp'
+
+    MyLabel:
+        id: label
+        text: ''
+        font_size: '15sp'
+
+    MDBoxLayout:
+        size_hint_y: None
+        size_hint_x: 0.2
+        height: self.minimum_height
+
+        MDIconButton:
+            id: marker_button 
+            icon: "map-marker"  
+            theme_icon_color: "Custom"
+            icon_color: "green"
+            size_hint_x: 0.2
+
+            on_release:
+                app.root.current_screen.focus_on_marker(root.data)
+
+        MDIconButton:
+            id: info
+            icon: "information-variant"
+            theme_icon_color: "Custom"
+            icon_color: "green"
+            size_hint_x: 0.2
+
+            on_release:
+                app.root.current_screen.show_info(root)
+
+<Manager>:
+    SplashScreen:
+        name: 'splash'
+    MainScreen:
+        name: 'main'
+
+<SplashScreen>:
+    canvas.before:
+        Color:
+            rgba: .25,.31,.45, .3
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Image:
+        id: logo
+        source: 'asets//logo/krabika_log.png'
+        size_hint: None, None
+        size: 300, 300
+        pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+        opacity: 0
+
+    Image:
+        id: word_1
+        source: 'asets//logo/K_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.385, 'center_y': 0.45}
+        opacity: 0
+
+    Image:
+        id: word_2
+        source: 'asets//logo/R_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.385, 'center_y': 0.45}
+        opacity: 0
+
+    Image:
+        id: word_3
+        source: 'asets//logo/A_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.385, 'center_y': 0.45}
+        opacity: 0
+
+    Image:
+        id: slash
+        source: 'asets//logo/Slash_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.385, 'center_y': 0.45}
+        opacity: 0
+    
+    Image:
+        id: word_4
+        source: 'asets//logo/B_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.525, 'center_y': 0.45}
+        opacity: 0
+
+    Image:
+        id: word_5
+        source: 'asets//logo/I_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.525, 'center_y': 0.45}
+        opacity: 0
+
+    Image:
+        id: word_6
+        source: 'asets//logo/K_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.5765, 'center_y': 0.4509}
+        opacity: 0
+
+    Image:
+        id: word_7
+        source: 'asets//logo/A_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.526, 'center_y': 0.4509}
+        opacity: 0
+
+    Image:
+        id: close_slash
+        source: 'asets//logo/Slash_log.png'
+        size_hint: None, None
+        size: 200, 200
+        pos_hint: {'center_x': 0.655, 'center_y': 0.45}
+        opacity: 0
+
+<MainScreen>:
+
+    #id
+    mapview: mapview
+    atraction_container: atraction_container
+    text_input: text_input
+
+    canvas.before:
+        Color: 
+            rgba: .90, .90, .90, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    MDGridLayout:
+        rows: 2
+        padding: 5
+        row_default_height: .5
+
+        # Верхняя часть - карта
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.5
+
+            MapView:
+                id: mapview
+                max_zoom: 18
+                min_zoom: 15
+                zoom: 16
+
+        # Нижняя часть - список
+        ScrollView:
+            size_hint_y: 0.5
+            bar_width: 8
+
+            MDGridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: '10dp'
+
+                MDTextField:
+                    id: text_input
+                    hint_text: 'Поиск достопримечательностей'
+                    size_hint: 1, None
+                    height: '40dp'
+
+                BoxLayout:
+                    id: atraction_container
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: '10dp'
