@@ -3,7 +3,7 @@
 Мобильное приложение с интерактивной картой достопримечательностей Ульяновска. 
 Мой первый проект на Kivy Python, созданный чтобы помочь туристам открыть для себя красоты города.
 
-![Демо](assets/Krab_map-working.gif)
+![Демо](asets/Krab_map-working.gif)
 
 ## ✨ Особенности
 - Интерактивная карта с 10+ достопримечательностями
@@ -22,7 +22,7 @@
 ## ⚙️ Установка
 ```bash
 git clone https://github.com/xl3p/Ulyanovsk-Landmarks-Guide.git
-cd ulyanovsk-landmarks
+cd Ulyanovsk-Landmarks-Guide
 pip install -r requirements.txt
 cd src
 python main.py
