@@ -20,7 +20,7 @@
 - JSON (хранение данных)
 
 ## ⚙️ Установка
-`bash
+```bash
 git clone https://github.com/xl3p/Ulyanovsk-Landmarks-Guide.git
 cd ulyanovsk-landmarks
 pip install -r requirements.txt
